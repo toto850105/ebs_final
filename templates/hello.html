@@ -1,56 +1,120 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>ebs final project</title>
-        <style>
-            body{
+
+<head>
+    <meta charset="utf-8">
+    <title>ebs final project</title>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+        
+        h1 {
+            color: blacks;
+            text-align: center;
+        }
+        
+        .row {
+            margin-left: 5%;
+            margin-right: 5%;
+            width: 90%;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .row div {
+            float: left;
+            width: 33vh;
+            height: 30vh;
+            /*padding: 2%;*/
+            border: 1px solid red;
+            /*margin-left: auto;*/
+        }
+        
+        .row div button {
+            width: 100%;
+            height: 100%;
+        }
+        
+        @media screen and (min-width:768px) {
+            body {
                 background-color: #ffffff;
             }
-            h1{
+            h1 {
                 color: blacks;
                 text-align: center;
             }
-            .row{
+            .row {
                 margin-left: 20%;
                 margin-right: 20%;
                 width: 60%;
-                display:flex;
-                justify-content:center;
+                display: flex;
+                justify-content: center;
             }
-            .row div{
-                
-                float:left;
+            .row div {
+                float: left;
                 width: 100px;
                 height: 100px;
                 /*padding: 2%;*/
                 border: 1px solid red;
                 /*margin-left: auto;*/
-            }      
-            .row div button{
-                width:100%;
-                height:100%;
             }
-        </style>
-    </head>
-    <body>
-        <h1>Test</h1>
-        <div>
-            <div class="row">
-                <div></div>
-                <div><button>up</button></div>
-                <div></div>
-            </div>
-            <div class="row">
-                <div><button>left</button></div>
-                <div><button>init</button></div>
-                <div><button>right</button></div>
-            </div>
-            <div class="row">
-                <div></div>
-                <div><button>down</button></div>
-                <div></div>
-            </div>
+            .row div button {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+    <script src="/static/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+    <h1>Test</h1>
+    <div>
+        <div class="row">
+            <div></div>
+            <div id="up"><button>up</button></div>
+            <div></div>
         </div>
-    </body>
+        <div class="row">
+            <div><button id="left">left</button></div>
+            <div><button id="init">init</button></div>
+            <div><button id="right">right</button></div>
+        </div>
+        <div class="row">
+            <div></div>
+            <div><button id="down">down</button></div>
+            <div></div>
+        </div>
+    </div>
+
+    <script>
+        $("#init").click(function() {
+            $.post("/post", {
+                "data": "init"
+            });
+        });
+        $("#up").click(function() {
+            $.post("/post", {
+                "data": "up"
+            });
+        });
+        $("#down").click(function() {
+            $.post("/post", {
+                "data": "down"
+            });
+        });
+        $("#left").click(function() {
+            $.post("/post", {
+                "data": "left"
+            });
+        });
+        $("#right").click(function() {
+            $.post("/post", {
+                "data": "right"
+            });
+        });
+    </script>
+</body>
+
 </html>
