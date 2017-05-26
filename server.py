@@ -9,7 +9,18 @@ def index():
 @app.route("/post", methods=['POST'])
 def post():
     data = request.form['data']
-    print(data)
+    if data == "init":
+        print("init")
+    elif data == "up":
+        print("up")
+    elif data == "down":
+        print("down")
+    elif data == "left":
+        print("left")
+    elif data == "right":
+        print("right")
+    else:
+        print("data is error!")
     return 'You POSTED!'
 
 if __name__ == "__main__":
