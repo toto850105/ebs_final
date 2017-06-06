@@ -91,9 +91,9 @@
             <div><button id="right">右轉</button></div>
         </div>
         <div class="row">
-            <div></div>
+            <div><button id="fight">戰鬥狀態</button></div>
             <div><button id="down">上升</button></div>
-            <div></div>
+            <div><button id="res">CPR</button></div>
         </div>
     </div>
 
@@ -121,6 +121,16 @@
         $("#right").click(function() {
             $.post("/post", {
                 "data": "right"
+            });
+        });
+        $("#fight").click(function() {
+            $.post("/post", {
+                "data": "init2"
+            });
+        });
+        $("#res").click(function() {
+            $.post("/post", {
+                "data": "res"
             });
         });
     </script>

@@ -20,8 +20,8 @@ pwm = Adafruit_PCA9685.PCA9685()
 #pwm = Adafruit_PCA9685.PCA9685(address=0x41, busnum=2)
 
 # Configure min and max servo pulse lengths
-servo_min = 150  # Min pulse length out of 4096
-servo_max = 600  # Max pulse length out of 4096
+#servo_min = 150  # Min pulse length out of 4096
+#servo_max = 600  # Max pulse length out of 4096
 
 # Helper function to make setting a servo pulse width simpler.
 def set_servo_pulse(channel, pulse):
@@ -46,7 +46,7 @@ def	init():
 	pwm.set_pwm(0, 0, 360)
 	pwm.set_pwm(1, 0, 360)
 	pwm.set_pwm(2, 0, 360)
-	pwm.set_pwm(3, 0, 360)
+	pwm.set_pwm(12, 0, 360)
 	pwm.set_pwm(4, 0, 360)
 	pwm.set_pwm(5, 0, 300)
 	pwm.set_pwm(6, 0, 360)
@@ -59,20 +59,21 @@ def	init():
 #up	
 def up():
 	for i in range(1,10,1):
-		pwm.set_pwm(1, 0, 360+15*i)
+		pwm.set_pwm(1, 0, 360+15*i+5)
 		pwm.set_pwm(4, 0, 360-15*i)
 		pwm.set_pwm(7, 0, 150+15*i)
 		pwm.set_pwm(10, 0, 360-15*i)
-		pwm.set_pwm(0, 0, 360+15*i)
-		pwm.set_pwm(3, 0, 360-15*i)
+		pwm.set_pwm(0, 0, 360+15*i-5)
+		pwm.set_pwm(12, 0, 360-15*i)
 		pwm.set_pwm(6, 0, 360+15*i)
 		pwm.set_pwm(9, 0, 360-15*i)
 		time.sleep(0.2)
+	time.sleep(2)
 #left
 def left():
 	pwm.set_pwm(5, 0, 420)
 	time.sleep(0.5)
-	pwm.set_pwm(3, 0, 360)
+	pwm.set_pwm(12, 0, 360)
 	pwm.set_pwm(4, 0, 360)
 	pwm.set_pwm(9, 0, 360)
 	pwm.set_pwm(10, 0, 360)
@@ -82,7 +83,7 @@ def left():
 	time.sleep(0.5)
 	pwm.set_pwm(5, 0, 300)
 	pwm.set_pwm(4, 0, 420)
-	pwm.set_pwm(3, 0, 330)
+	pwm.set_pwm(12, 0, 330)
 	time.sleep(0.5)
 	pwm.set_pwm(9, 0, 240)
 	pwm.set_pwm(10 , 0, 240)
@@ -131,13 +132,13 @@ def forward():
 	pwm.set_pwm(7, 0, 150)
 	time.sleep(0.5)
 
-	pwm.set_pwm(3, 0, 240)
+	pwm.set_pwm(12, 0, 240)
 	pwm.set_pwm(4, 0, 420)
 	time.sleep(0.5)
 	pwm.set_pwm(9, 0, 240)
 	pwm.set_pwm(10, 0, 240)
 	time.sleep(0.5)
-	pwm.set_pwm(3, 0, 360)
+	pwm.set_pwm(12, 0, 360)
 	pwm.set_pwm(4, 0, 360)
 	time.sleep(0.5)
 	pwm.set_pwm(9, 0, 360)
@@ -150,12 +151,30 @@ def ini2():
 	pwm.set_pwm(11, 0, 480)
 	pwm.set_pwm(0, 0, 360)
 	pwm.set_pwm(1, 0, 360)
-	#pwm.set_pwm(3, 0, 360)
+	pwm.set_pwm(12, 0, 360)
 	pwm.set_pwm(4, 0, 360)
 	pwm.set_pwm(6, 0, 360)
 	pwm.set_pwm(7, 0, 150)
 	pwm.set_pwm(9, 0, 360)
 	pwm.set_pwm(10, 0, 360)
+
+
+def ini3():
+	#pwm.set_pwm(2, 0, 240)
+	pwm.set_pwm(5, 0, 420)
+	pwm.set_pwm(8, 0, 240)
+	pwm.set_pwm(11, 0, 480)
+	#pwm.set_pwm(0, 0, 360)
+	#pwm.set_pwm(1, 0, 360)
+	#pwm.set_pwm(12, 0, 360)
+	pwm.set_pwm(4, 0, 360)
+	pwm.set_pwm(6, 0, 360)
+	pwm.set_pwm(7, 0, 150)
+	pwm.set_pwm(9, 0, 360)
+	pwm.set_pwm(10, 0, 360)
+
 #while True:
 #	ini2()
+#	ini3()
+#	pwm.set_pwm(13, 0, 360)
 #	time.sleep(1)	
